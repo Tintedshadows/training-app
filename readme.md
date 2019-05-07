@@ -1,51 +1,189 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+Hello!
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## The Database Dump 
 
-## About Laravel
+-- phpMyAdmin SQL Dump
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 07, 2019 at 04:07 AM
+-- Server version: 5.7.14
+-- PHP Version: 5.6.25
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-## Learning Laravel
+--
+-- Database: `laravel`
+--
 
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
+-- --------------------------------------------------------
 
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
+--
+-- Table structure for table `employees`
+--
 
-## Laravel Sponsors
+CREATE TABLE `employees` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lname` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postal` int(11) NOT NULL,
+  `confirmedEmail` int(11) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(225) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-We would like to extend our thanks to the following sponsors for helping fund on-going Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](http://patreon.com/taylorotwell):
+--
+-- Dumping data for table `employees`
+--
 
-- **[Vehikl](http://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Styde](https://styde.net)**
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
+INSERT INTO `employees` (`id`, `username`, `fname`, `lname`, `phone`, `postal`, `confirmedEmail`, `email`, `status`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'johndoe', 'john', 'doe', '920-242-3060', 54303, 1, 'cooldude@email.com', 'Active', '123', 'Employee', NULL, '2019-05-06 05:00:00', '2019-05-06 05:00:00'),
+(2, 'MikeMcGraw', 'Mike', 'McGraw', '9206459057', 54220, 0, 'mike.mcgraw@hotmail.com', 'Active', '123', 'Employee', NULL, NULL, NULL);
 
-## Contributing
+-- --------------------------------------------------------
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+--
+-- Table structure for table `migrations`
+--
 
-## Security Vulnerabilities
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+-- --------------------------------------------------------
 
-## License
+--
+-- Table structure for table `roles`
+--
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `role` varchar(225) NOT NULL,
+  `createEm` int(11) NOT NULL,
+  `createRole` int(11) NOT NULL,
+  `deleteEm` int(11) NOT NULL,
+  `deleteRole` int(11) NOT NULL,
+  `createUsers` int(11) NOT NULL,
+  `editEm` int(11) NOT NULL,
+  `editRole` int(11) NOT NULL,
+  `editUsers` int(11) NOT NULL,
+  `updateEm` int(11) NOT NULL,
+  `updateRole` int(11) NOT NULL,
+  `viewEm` int(11) NOT NULL,
+  `viewRole` int(11) NOT NULL,
+  `created_at` date NOT NULL,
+  `updated_at` date NOT NULL,
+  `deleteUsers` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `role`, `createEm`, `createRole`, `deleteEm`, `deleteRole`, `createUsers`, `editEm`, `editRole`, `editUsers`, `updateEm`, `updateRole`, `viewEm`, `viewRole`, `created_at`, `updated_at`, `deleteUsers`) VALUES
+(1, 'Admin', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2019-05-05', '2019-05-05', 1),
+(2, 'Employee', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, '2019-05-05', '2019-05-05', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lname` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `postal` int(11) NOT NULL,
+  `confirmedEmail` int(11) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(225) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `fname`, `lname`, `phone`, `postal`, `confirmedEmail`, `email`, `status`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(16, 'PatriciaMcGraw', 'Patricia', 'McGraw', '9206459057', 54220, 1, 'mike.mcgraw@hotmail.com', 'Active', '$2y$10$zx6RIms03fvtfHrWNBO21eoc7D50cXQM3IIXeYopLT5vMVuZQoGOy', 'Admin', '8P1ySjwIU4', '2019-05-06 07:41:59', '2019-05-06 07:41:59'),
+(10, 'Cool Guy', 'Cool', 'Guy', '920-242-3060', 54303, 1, 'test@email.com', 'Active', '$2y$10$aB6lhTdl/PQQ3n7Jt2xVkelKTwoEGlwhlos9ubZ9Zin.UlHJK0nna', 'Admin', '6WVSgWaODKcMFvQrisv6ZPVDRmjHLZ7EPhCZN5DePdqmJGS88zaFSaSi9BdY', '2019-05-04 21:17:46', '2019-05-05 09:32:57');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
