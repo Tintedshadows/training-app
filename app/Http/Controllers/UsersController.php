@@ -27,6 +27,7 @@ class UsersController extends Controller
 
 
     public function updateUser(Request $request, $id){
+
       $this->validate($request, [
         'status' => 'required',
       ]);
@@ -69,7 +70,7 @@ class UsersController extends Controller
 
     public function getUsers(){
 
-        $users = User::all();
+      $users = User::all();
 
 
       return view('users.index')->with('users', $users);
@@ -77,7 +78,9 @@ class UsersController extends Controller
 
 
     function editUsers($id){
-      if(Auth::user()->role === 'Admin'){
+     $canEdit = User::canEditUsers();
+
+      if($canEdit[0] == 1){
         $user = User::find($id);
 
         $roles = DB::table('roles')->get();
@@ -97,8 +100,6 @@ class UsersController extends Controller
         'lname' => 'required',
         'phone' => 'required',
         'postal' => 'required',
-        'confirmedEmail' => 'required',
-        'status' => 'required',
       ]);
 
       //hash the Password
@@ -117,9 +118,9 @@ class UsersController extends Controller
       $user->lname = $request->input('lname');
       $user->phone = $request->input('phone');
       $user->postal = $request->input('postal');
-      $user->confirmedEmail = $request->input('confirmedEmail');
+      $user->confirmedEmail = "0";
       $user->status = 'Active';
-      $user->role = $request->input('status');
+      $user->role = $request->input('role');
       $user->remember_token = str_random(10);
 
       $user->save();
@@ -128,7 +129,10 @@ class UsersController extends Controller
     }
 
     public function createUser(){
-      if(Auth::user()->role === 'Admin'){
+
+      $canEdit = User::canCreateUsers();
+
+      if($canEdit[0] == 1){
         $roles = DB::table('roles')->get();
         //return $roles;
         return view('users.create')->with('roles', $roles);
@@ -138,10 +142,16 @@ class UsersController extends Controller
 
     }
     public function destory($id){
+      $canDelete = User::canDeleteUsers();
+
+      if($canDelete[0] === 1){
       $user = User::find($id);
       $user->delete();
 
       return redirect('/users')->with('success','User Deleted');
+    }else{
+      return redirect('/users')->with('error','Need Higher Privages');
+    }
     }
 
 }

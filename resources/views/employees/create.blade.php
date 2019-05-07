@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
- <h2>Create User</h2>
+ <h2>Create Employee</h2>
  <div class="row filters">
 
  </div>
  <div class="row">
    <div class="col-md-12">
      <a href="{{ url('/users') }}" class="btn btn-default">All Users</a>
-     {!! Form::open([ 'action' => 'UsersController@store', 'method' => 'POST']) !!}
+     {!! Form::open([ 'action' => 'EmployeesController@store', 'method' => 'POST']) !!}
      <table class="table">
        <thead>
          <tr>
@@ -30,7 +30,7 @@
              <td>{{Form::text('lname', '', ['class' => 'form-control'])}}</td>
              <td>{{Form::text('phone', '', ['class' => 'form-control'])}}</td>
              <td>{{Form::text('postal', '', ['class' => 'form-control'])}}</td>
-             <td><select id="emailConfirmed"><option value="1">Confirmed</option><option value="0">UnConfirmed</option></select></td>
+             <td><select id="confirmedEmail"><option value="1">Confirmed</option><option value="0">UnConfirmed</option></select></td>
              <td><select id="role" name="role">
                @foreach($roles as $role)
                  <option value="{{ $role->id }}">{{ $role->role }}</option>
