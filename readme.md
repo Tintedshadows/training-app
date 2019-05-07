@@ -129,8 +129,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `fname`, `lname`, `phone`, `postal`, `confirmedEmail`, `email`, `status`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(16, 'PatriciaMcGraw', 'Patricia', 'McGraw', '9206459057', 54220, 1, 'mike.mcgraw@hotmail.com', 'Active', '$2y$10$zx6RIms03fvtfHrWNBO21eoc7D50cXQM3IIXeYopLT5vMVuZQoGOy', 'Admin', '8P1ySjwIU4', '2019-05-06 07:41:59', '2019-05-06 07:41:59'),
-(10, 'Cool Guy', 'Cool', 'Guy', '920-242-3060', 54303, 1, 'test@email.com', 'Active', '$2y$10$aB6lhTdl/PQQ3n7Jt2xVkelKTwoEGlwhlos9ubZ9Zin.UlHJK0nna', 'Admin', '6WVSgWaODKcMFvQrisv6ZPVDRmjHLZ7EPhCZN5DePdqmJGS88zaFSaSi9BdY', '2019-05-04 21:17:46', '2019-05-05 09:32:57');
+(10, 'Cool Guy', 'Cool', 'Guy', '920-555-5555', 54303, 1, 'test@email.com', 'Active', '$2y$10$aB6lhTdl/PQQ3n7Jt2xVkelKTwoEGlwhlos9ubZ9Zin.UlHJK0nna', 'Admin', '6WVSgWaODKcMFvQrisv6ZPVDRmjHLZ7EPhCZN5DePdqmJGS88zaFSaSi9BdY', '2019-05-04 21:17:46', '2019-05-05 09:32:57');
 
 --
 -- Indexes for dumped tables
